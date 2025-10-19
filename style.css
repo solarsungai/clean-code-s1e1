@@ -27,6 +27,10 @@
   width: 500px;
   margin: 0 auto 0;
 }
+.add-task {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
 .task {
   width: 56%;
   display: inline-block;
