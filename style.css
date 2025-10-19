@@ -13,7 +13,7 @@
 .aaa-img {
   width: 100%;
 }
-.more_inf {
+.more-inf {
   font-family: fantasy, cursive;
 }
 
@@ -139,10 +139,10 @@ button {
 .list-elem > .input-text {
   display: none;
 }
-.editMode .input-text {
+.edit-mode .input-text {
   display: inline-block;
   width: 224px;
 }
-.editMode .task-label {
+.edit-mode .task-label {
   display: none;
 }
