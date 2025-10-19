@@ -9,7 +9,7 @@
 // Event handling, user interaction is what starts the code execution.
 
 var taskInput=document.getElementById('new-task');//Add a new task.
-var addButton=document.getElementsByTagName('button')[0];//first button
+var addButton=document.getElementById('add-btn');//first button
 var incompleteTaskHolder=document.getElementById('incomplete-tasks');//ul of #incomplete-tasks
 var completedTasksHolder=document.getElementById('completed-tasks');//completed-tasks
 
@@ -18,33 +18,31 @@ var completedTasksHolder=document.getElementById('completed-tasks');//completed-
 var createNewTaskElement=function(taskString){
 
   var listItem=document.createElement('li');
+   listItem.className = 'list-elem';
 
   //input (checkbox)
-  var checkBox=document.createElement('input');//checkbx
+  var checkBox=document.createElement('input');
+  checkBox.type = 'checkbox';
+  checkBox.className = 'input-checkbox';
   //label
-  var label=document.createElement('label');//label
+  var label=document.createElement('label');
+  label.innerText = taskString;
+  label.className = 'task task-label';
   //input (text)
-  var editInput=document.createElement('input');//text
+  var editInput=document.createElement('input');
+  editInput.type = 'text';
+  editInput.className = 'input-text task';
   //button.edit
-  var editButton=document.createElement('button');//edit button
+  var editButton=document.createElement('button');
+  editButton.innerText = 'Edit';
+  editButton.className = 'btn edit';
 
   //button.delete
-  var deleteButton=document.createElement('button');//delete button
-  var deleteButtonImg=document.createElement('img');//delete button image
-
-  label.innerText=taskString;
-  label.className='task';
-
-  //Each elements, needs appending
-  checkBox.type='checkbox';
-  editInput.type='text';
-  editInput.className='task';
-
-  editButton.innerText='Edit'; //innerText encodes special characters, HTML does not.
-  editButton.className='edit';
-
-  deleteButton.className='delete';
-  deleteButtonImg.src='./remove.svg';
+  var deleteButton=document.createElement('button');
+  deleteButton.className = 'btn delete';
+  var deleteButtonImg=document.createElement('img');
+  deleteButtonImg.src = './remove.svg';
+  deleteButtonImg.className = 'remove-img';
   deleteButton.appendChild(deleteButtonImg);
 
 
@@ -54,6 +52,7 @@ var createNewTaskElement=function(taskString){
   listItem.appendChild(editInput);
   listItem.appendChild(editButton);
   listItem.appendChild(deleteButton);
+  
   return listItem;
 }
 
