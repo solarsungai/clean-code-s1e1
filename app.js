@@ -64,7 +64,11 @@ var editTask = function() {
   var isEditing = listItem.classList.contains('task-list__item--edit-mode');
 
   if (isEditing) {
-    label.innerText = editInput.value;
+    if (editInput.value.trim() === '') {
+      editInput.value = label.innerText;
+    } else {
+      label.innerText = editInput.value;
+    }
     editBtn.innerText = 'Edit';
   } else {
     editInput.value = label.innerText;
