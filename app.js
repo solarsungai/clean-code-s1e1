@@ -101,6 +101,22 @@ var editTask = function(){
 };
 
 
+//Close edit mode and save changes without save button.
+
+var closeEditMode = function(listItem) {
+  if (listItem.classList.contains('task-list__item--edit-mode')) {
+    var editInput = listItem.querySelector('input[type=text]');
+    var label = listItem.querySelector('label');
+    var editBtn = listItem.querySelector('.btn--edit');
+    
+    label.innerText = editInput.value;
+    editBtn.innerText = 'Edit';
+    
+    listItem.classList.remove('task-list__item--edit-mode');
+  }
+};
+
+
 //Delete task.
 var deleteTask = function(){
   console.log('Delete Task...');
@@ -118,6 +134,7 @@ var taskCompleted = function(){
 
   //Append the task list item to the #completed-tasks
   var listItem = this.parentNode;
+  closeEditMode(listItem);
   completedTasksHolder.appendChild(listItem);
   bindTaskEvents(listItem, taskIncomplete);
 }
@@ -129,6 +146,7 @@ var taskIncomplete = function(){
   //When the checkbox is unchecked
   //Append the task list item to the #incomplete-tasks.
   var listItem = this.parentNode;
+  closeEditMode(listItem);
   incompleteTaskHolder.appendChild(listItem);
   bindTaskEvents(listItem,taskCompleted);
 }
@@ -169,8 +187,6 @@ for (var i = 0; i < incompleteTaskHolder.children.length; i++){
   //bind events to list items chldren(tasksCompleted)
   bindTaskEvents(incompleteTaskHolder.children[i], taskCompleted);
 }
-
-
 
 
 //cycle over completedTasksHolder ul list items
